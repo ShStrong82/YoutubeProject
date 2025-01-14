@@ -1,0 +1,247 @@
+﻿@model YoutubeVideoDto?
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link href="~/favicon.ico" rel="icon" sizes="32x32" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="Sh_Strong" />
+
+    <!-- BOOTSTRAP CSS -->
+    <!-- <link rel="stylesheet" href="./assets/lib/bootstrap/css/bootstrap.min.css" type="text/css" /> -->
+    <!-- FONTAWESOME CSS -->
+    <link
+      rel="stylesheet"
+      href="~/lib/fontawesome/css/all.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="~/lib/sweetAlert/dist/sweetalert2.min.css"
+    />
+    <!-- BOOTSTRAP VALIDATOR CSS -->
+    <!-- <link rel="stylesheet" href="./assets/lib/bootstrap/validator.min.css" type="text/css" /> -->
+    <!-- THEME STYLE CSS -->
+    <link rel="stylesheet" href="~/css/youtubeService_style.css" type="text/css" />
+
+    <title>سرویس Youtube</title>
+  </head>
+
+  <body>
+    <!-- header section starts  -->
+    <header>
+      <div id="menu-bar" class="fas fa-bars"></div>
+
+      <nav class="navbar">
+        <a asp-controller="Home" asp-action="Index">خانه <i class="fas fa-home"></i></a>
+
+        <!-- services select option -->
+@*         <select id="servicesSelectOption">
+          <option value="#">لیست سرویس ها</option>
+          <option value="./index.html">سرویس Youtube</option>
+          <!-- <option value="../VoiceToTextServicePage/index.html">
+            سرویس صوت به متن
+          </option> -->
+        </select> *@
+
+        <a href="#aboutServices">درباره سرویس ها</a>
+        <a href="#aboutUs">درباره ما</a>
+      </nav>
+
+      <a asp-controller="Home" asp-action="Index" class="logo"
+        ><img src="~/img/Logo.png" alt="logo-img"
+      /></a>
+    </header>
+    <!-- header section ends  -->
+
+    <!-- Services section starts  -->
+
+    <section class="services" id="services">
+      <div class="content">
+        <h3 id="serviceTitle">سرویس Youtube</h3>
+
+        <!-- get input url -->
+        <div class="inputUrl-Wrapper">
+            <form asp-controller="Video" asp-action="getVideoDetails" method="get">
+                <input type="text" name="videoId" id="videoId" placeholder="لینک را وارد کنید" />
+                <button type="submit">
+                    <i class="fa fa-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+
+        <!-- Video Deatails (Thumbnail, Title, ..) -->
+        <div class="card" id="videoDeatailsCard" style="visibility: hidden">
+          <img src="@if(Model != null)
+                 {
+                    @Model.ThumbnailSrc
+                 }" alt="Card Image" />
+          <div class="card-title">
+              @if(Model != null)
+              {
+                  @Model.Title
+              }
+          </div>
+
+          <!-- Audio of Video -->
+          <!-- <audio controls>
+            <source src="horse.ogg" type="audio/ogg" />
+            <source
+              src="D:\Fly Me To The Moon - Squid Game 2 Version (Official Audio).mp3"
+              type="audio/mpeg"
+            />
+            Your browser does not support the audio element.
+          </audio> -->
+        </div>
+
+        <!-- video -->
+        <div class="video_Wrapper" id="video_Wrapper">
+          <iframe
+            id="video_iframe"
+            width="420"
+            height="315"
+            src=""
+            allowfullscreen
+          >
+          </iframe>
+        </div>
+
+        <!-- Transcript text -->
+        <div
+          class="transcriptText_Wrapper"
+          id="transcriptText_Wrapper"
+          style="visibility: hidden"
+        >
+          <h1>متن اصلی ویدیو</h1>
+          <div class="transcriptText" id="transcriptText">
+            <!-- TrnaScript -->
+            <br />
+
+            <!-- probebly a "xml" tag with data-start, data-end or dataDuration 
+            with sync to the sound-->
+            <p id="origianl_text">
+                        @if (Model != null)
+                        {
+                            @Model.OrginalTranscript
+                        }
+            </p>
+
+            <br />
+
+            <button onclick="copyText('origianl_text')">کپی متن!</button>
+          </div>
+        </div>
+
+        <!-- Translated To Persian Transcript -->
+        <!-- if text was another language fill this part, if text was persian hide this element (display: none) -->
+        <div
+          class="translated_TranscriptText_Wrapper"
+          id="translated_TranscriptText_Wrapper"
+          style="visibility: hidden"
+        >
+          <h1>متن ترجمه شده به فارسی</h1>
+          <div class="translatedTranscriptText" id="translatedTranscriptText">
+            <br />
+
+            <p id="translated_text">
+                        @if (Model != null)
+                        {
+                            @Model.TranslatedTranscript
+                        }
+            </p>
+
+            <br />
+
+            <button onclick="copyText('translated_text')">کپی متن!</button>
+          </div>
+        </div>
+
+        <!-- Summarize Transcript (persian, original one) -->
+        <!-- <div class="summarized_TranscriptText_Wrapper"> -->
+        <!-- <h1>متن خلاصه شده</h1> -->
+
+        <!-- <div class="summarizedTranscriptText" id="summarizedTranscriptText"> -->
+        <!-- select Option for summarize -->
+        <!-- <select id="selectOptionsSummarize"> -->
+        <!-- <option value="#">اننخاب زبان خلاصه</option> -->
+        <!-- <option value="#">خلاصه متن اصلی</option> -->
+        <!-- <option value="#">خلاصه متن ترجمه شده به فارسی</option> -->
+        <!-- </select> -->
+        <!-- TrnaScript -->
+        <!-- <br /> -->
+
+        <!-- <p id="summarized_text"> -->
+        <!-- fill with select function (persian or origianl) -->
+        <!-- </p> -->
+
+        <!-- <br /> -->
+
+        <!-- hide it before user selected the option -->
+        <!-- <button onclick="copyText('summarized_text')" style="display: none"> -->
+        <!-- کپی متن! -->
+        <!-- </button> -->
+        <!-- </div> -->
+        <!-- </div> -->
+      </div>
+    </section>
+
+    <!-- Services section ends -->
+
+    <!-- aboutServices section starts  -->
+
+    <section class="aboutServices" id="aboutServices">
+      <h1 class="heading">
+        <span>درباره سرویس ها</span>
+      </h1>
+
+      <div class="box-container">
+        <div class="box">
+          <i class="fa fa-play-circle"></i>
+          <h3>دریافت متن از Youtube</h3>
+          <p>
+            با این سرویس شما می توانید لینک ویدیو را وارد کرده و متن آن را با
+            قابلیت ترجمه آن به زبان فارسی دریافت کنید.
+          </p>
+        </div>
+        <!-- <div class="box">
+          <i class="fa fa-file-text"></i>
+          <h3>صدا به متن</h3>
+          <p>
+            یکی دیگر از سرویس ها قابلیت تبدیل صدا به متن و دریافت خلاصه ای از آن
+            می باشد.
+          </p>
+        </div> -->
+      </div>
+    </section>
+
+    <!-- aboutServices section ends -->
+
+    <!-- footer section starts  -->
+
+    <section class="footer" id="aboutUs">
+      <div class="box-container">
+        <div class="box">
+          <h3>درباره ما</h3>
+          <p>شایان رسولی</p>
+        </div>
+        <div class="box">
+          <h3>دنبال کردن ما در</h3>
+          <a href="#">instagram</a>
+          <a href="#">linkedin</a>
+        </div>
+      </div>
+
+      <h1 class="credit">کلیه حقوق این وب سایت محفوظ می باشد.</h1>
+    </section>
+
+    <!-- footer section ends  -->
+
+    <!-- custom js file link  -->
+    <script src="~/js/youtubeService_main_script.js"></script>
+    <script src="~/js/youtubeService_getVideoId.js"></script>
+    <script src="~/lib/sweetAlert/dist/sweetalert2.all.min.js"></script>
+    <script src="~/js/youtubeService_setSelectOptionsClickable.js"></script>
+  </body>
+</html>

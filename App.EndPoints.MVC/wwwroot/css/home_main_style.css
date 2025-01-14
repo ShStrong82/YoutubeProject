@@ -1,0 +1,357 @@
+@font-face {
+  font-family: "Vazir";
+  src: url("../fonts/Vazir/Vazir.woff") format("woff"),
+    url("../fonts/Vazir/Vazir.ttf") format("truetype"),
+    url("../fonts/Vazir/Vazir.woff2") format("woff2");
+}
+
+:root {
+  --red: #a0180c;
+}
+* {
+  font-family: "Vazir";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*text-transform: capitalize;*/
+  outline: none;
+  border: none;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+*::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+html {
+  font-family: "Vazir";
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-padding-top: 6rem;
+  scroll-behavior: smooth;
+  text-align: right;
+  direction: rtl;
+}
+
+section {
+  padding: 2rem 9%;
+}
+
+.heading {
+  text-align: center;
+  padding: 2.5rem 0;
+}
+
+.heading span {
+  font-size: 3.5rem;
+  background: rgba(213, 73, 13, 0.2);
+  color: var(--red);
+  border-radius: 0.5rem;
+  padding: 0.2rem 1rem;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: var(--red);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 9%;
+}
+
+header .logo {
+  font-size: 2.5rem;
+  font-weight: bolder;
+  color: #fff;
+  /*text-transform: uppercase;*/
+}
+
+header .navbar a {
+  color: #fff;
+  font-size: 2rem;
+  margin: 0 0.8rem;
+  position: relative;
+  padding: 0.2em 0;
+}
+
+header .navbar a::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0.1em;
+  background-color: #fff;
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+  opacity: 1;
+  transform: scale(0);
+  transform-origin: center;
+}
+
+header .navbar a:hover::after,
+header .navbar a:focus::after {
+  opacity: 1;
+  transform: translate3d(0, 0.2em, 0);
+  transform: scale(1);
+}
+
+#menu-bar {
+  color: #fff;
+  font-size: 3rem;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  display: none;
+}
+
+.services {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../img/bg/main-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  position: relative;
+  z-index: 0;
+}
+
+.services .content {
+  margin-top: 150px;
+  text-align: center;
+}
+
+.services .content h3 {
+  font-size: 4.5rem;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 0.3rem 0.5rem rgba(0, 0, 0, 0.1);
+}
+
+.services .content p {
+  font-size: 2.5rem;
+  color: #fff;
+  padding: 0.5rem 0;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+
+button {
+  margin-top: 40px;
+  --tilt: 40px;
+
+  display: block;
+  box-sizing: border-box;
+  padding: 40px 180px;
+  border-radius: 999px;
+
+  position: relative;
+  overflow: hidden;
+
+  color: #fff;
+  background: none;
+
+  text-transform: uppercase;
+  border: 1px solid currentColor;
+
+  & span {
+    font-weight: 900;
+    font-size: 25px;
+    mix-blend-mode: difference;
+  }
+
+  &:before,
+  &:after {
+    content: "";
+    z-index: -1;
+    width: calc(100% + var(--tilt));
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    background: #fff;
+    clip-path: polygon(0 0, calc(100% - var(--tilt)) 0, 100% 100%, 0 100%);
+    transition: transform 0.6s;
+  }
+  &:before {
+    left: calc(-100% - var(--tilt));
+  }
+  &:after {
+    left: 100%;
+    transform: rotate(180deg);
+  }
+  &:hover:before {
+    transform: translateX(100%);
+  }
+  &:hover:after {
+    transform: rotate(180deg) translateX(100%);
+  }
+}
+
+.aboutServices .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.aboutServices .box-container .box {
+  flex: 1 1 30rem;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.aboutServices .box-container .box i {
+  padding: 1rem;
+  font-size: 5rem;
+  color: var(--blue);
+}
+
+.aboutServices .box-container .box h3 {
+  font-size: 2.5rem;
+  color: #333;
+}
+
+.aboutServices .box-container .box p {
+  font-size: 1.5rem;
+  color: #666;
+  padding: 1rem 0;
+}
+
+.aboutServices .box-container .box:hover {
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+}
+
+.footer {
+  background: #333;
+}
+
+.footer .box-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.footer .box-container .box {
+  padding: 1rem 0;
+  flex: 1 1 25rem;
+}
+
+.footer .box-container .box h3 {
+  font-size: 2.5rem;
+  padding: 0.7rem 0;
+  color: #fff;
+}
+
+.footer .box-container .box p {
+  font-size: 1.5rem;
+  padding: 0.7rem 0;
+  color: #eee;
+}
+
+.footer .box-container .box a {
+  display: block;
+  font-size: 1.5rem;
+  padding: 0.7rem 0;
+  color: #eee;
+}
+
+.footer .box-container .box a:hover {
+  color: var(--red);
+  text-decoration: underline;
+}
+
+.footer .credit {
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 1rem;
+  font-size: 2rem;
+  font-weight: normal;
+  color: #fff;
+  border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
+}
+
+.footer .credit a {
+  color: var(--red);
+}
+
+/* media queries  */
+
+@media (max-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (max-width: 991px) {
+  header {
+    padding: 2rem;
+  }
+
+  section {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-bar {
+    display: initial;
+  }
+
+  header .navbar {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    left: 0;
+    background: #333;
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 2rem;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+
+  header .navbar.active {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+
+  header .navbar a {
+    display: block;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    background: #222;
+  }
+
+  button {
+    padding: 40px 90px;
+    & span {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .heading span {
+    font-size: 2.5rem;
+  }
+
+  .contact .row form .inputBox input {
+    width: 100%;
+  }
+}

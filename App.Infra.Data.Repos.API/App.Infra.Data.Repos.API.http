@@ -1,0 +1,6 @@
+@App.Infra.Data.Repos.API_HostAddress = http://localhost:5202
+
+GET {{App.Infra.Data.Repos.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
