@@ -39,6 +39,8 @@ public class YoutubeVideoService : IYoutubeVideoService
 
         var thumbnailUrl = getThumbnailUrl(videoDetails);
 
+        var videoSrc = getNormalizedVideoSrc(videoId);
+
         var subtitleUrl = getSubtitleUrl(videoDetails);
 
 
@@ -68,6 +70,7 @@ public class YoutubeVideoService : IYoutubeVideoService
         {
             Title = titleVideo,
             ThumbnailSrc = thumbnailUrl,
+            VideoSrc = videoSrc,
             OrginalTranscript = original_Transcript,
             TranslatedTranscript = translated_Transcript,
         };
@@ -198,6 +201,14 @@ public class YoutubeVideoService : IYoutubeVideoService
     }
 
 
+
+    // get Normalize VideoSrc
+    public string? getNormalizedVideoSrc(string videoId)
+    {
+        var result = $"https://www.youtube.com/embed/{videoId}";
+
+        return result;
+    }
 
     // get Audio of youtube by save on path
 

@@ -14,9 +14,9 @@ public class YoutubeVideoAppService : IYoutubeVideoAppService
 
     public async Task<YoutubeVideoDto?> getVideoDetails(string videoId, CancellationToken cancellationToken)
     {
-        //var normalizedUrl = getNormalizedVideoUrl(videoId);
+        var normalizedUrl = getNormalizedVideoUrl(videoId);
 
-        return await _youtubeVideoService.getVideoDetails(videoId, cancellationToken);
+        return await _youtubeVideoService.getVideoDetails(normalizedUrl, cancellationToken);
     }
 
 

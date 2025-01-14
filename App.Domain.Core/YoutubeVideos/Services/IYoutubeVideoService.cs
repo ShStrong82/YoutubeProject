@@ -31,4 +31,8 @@ public interface IYoutubeVideoService
     public string? getTranslationTextGemini(string jsonData);
 
     public string? getTranslationAI(string jsonData);
+
+
+    // get Normalized url of VideoSrc
+    public string? getNormalizedVideoSrc(string videoId);
 }

@@ -16,6 +16,7 @@ public class YoutubeVideo
     public string TranslatedTranscript { get; set; }
 
 
+    public string? VideoSrc { get; set; }
 
 
     // summary of original transcript

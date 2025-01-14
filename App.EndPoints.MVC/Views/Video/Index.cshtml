@@ -64,16 +64,16 @@
 
         <!-- get input url -->
         <div class="inputUrl-Wrapper">
-            <form asp-controller="Video" asp-action="getVideoDetails" method="get">
-                <input type="text" name="videoId" id="videoId" placeholder="لینک را وارد کنید" />
-                <button type="submit">
+            <form asp-controller="Video" asp-action="getVideoDetails" method="post">
+                <input type="text" name="videoId" id="input_Url" placeholder="لینک را وارد کنید" />
+                <button id="inputUrlBtn" type="submit">
                     <i class="fa fa-arrow-right"></i>
                 </button>
             </form>
         </div>
 
         <!-- Video Deatails (Thumbnail, Title, ..) -->
-        <div class="card" id="videoDeatailsCard" style="visibility: hidden">
+@*          <div class="card" id="videoDeatailsCard" style="visibility: hidden">
           <img src="@if(Model != null)
                  {
                     @Model.ThumbnailSrc
@@ -94,10 +94,10 @@
             />
             Your browser does not support the audio element.
           </audio> -->
-        </div>
+        </div> *@
 
         <!-- video -->
-        <div class="video_Wrapper" id="video_Wrapper">
+@*         <div class="video_Wrapper" id="video_Wrapper">
           <iframe
             id="video_iframe"
             width="420"
@@ -106,10 +106,10 @@
             allowfullscreen
           >
           </iframe>
-        </div>
+        </div> *@
 
         <!-- Transcript text -->
-        <div
+@*         <div
           class="transcriptText_Wrapper"
           id="transcriptText_Wrapper"
           style="visibility: hidden"
@@ -132,11 +132,11 @@
 
             <button onclick="copyText('origianl_text')">کپی متن!</button>
           </div>
-        </div>
+        </div> *@
 
         <!-- Translated To Persian Transcript -->
         <!-- if text was another language fill this part, if text was persian hide this element (display: none) -->
-        <div
+@*         <div
           class="translated_TranscriptText_Wrapper"
           id="translated_TranscriptText_Wrapper"
           style="visibility: hidden"
@@ -156,7 +156,7 @@
 
             <button onclick="copyText('translated_text')">کپی متن!</button>
           </div>
-        </div>
+        </div> *@
 
         <!-- Summarize Transcript (persian, original one) -->
         <!-- <div class="summarized_TranscriptText_Wrapper"> -->

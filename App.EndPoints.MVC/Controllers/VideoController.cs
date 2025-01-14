@@ -5,8 +5,8 @@ using System.Threading;
 
 namespace App.EndPoints.MVC.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
+    //[ApiController]
+    //[Route("api/[controller]")]
     public class VideoController : Controller
     {
         private readonly IYoutubeVideoAppService _youtubeVideoAppService;
@@ -22,7 +22,7 @@ namespace App.EndPoints.MVC.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet("{videoId}")]
+        [HttpPost]
         public async Task<IActionResult> getVideoDetails(string? videoId, CancellationToken cancellationToken)
         {
             var dataModel = await _youtubeVideoAppService.getVideoDetails(videoId, cancellationToken);
